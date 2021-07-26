@@ -34,6 +34,8 @@ gulp.task('fixShrinkwrap', function fixShrinkwrap (done) {
   fs.writeFile('./npm-shrinkwrap.json', shrinkwrapString, done);
 });
 
+gulp.task('copy-schema', () => gulp.src('./lib/appium.schema.json').pipe(gulp.dest('./build/lib/')));
+
 boilerplate({
   build: 'appium',
   files: [
@@ -46,7 +48,8 @@ boilerplate({
   test: {
     files: ['${testDir}/**/*-specs.js']
   },
-  testTimeout: 160000
+  testTimeout: 160000,
+  postTranspile: ['copy-schema']
 });
 
 // generates server arguments readme
