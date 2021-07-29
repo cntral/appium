@@ -7,9 +7,10 @@ import chai from 'chai';
 
 const should = chai.should();
 
-const ALLOW_FIXTURE = 'test/fixtures/allow-feat.txt';
-const DENY_FIXTURE = 'test/fixtures/deny-feat.txt';
-const FAKE_DRIVER_ARGS_PATH = path.resolve(__dirname, '..', '..', 'test', 'fixtures', 'driverArgs.json');
+// these paths should not make assumptions about the current working directory
+const ALLOW_FIXTURE = path.join(__dirname, 'fixtures', 'allow-feat.txt');
+const DENY_FIXTURE = path.join(__dirname, 'fixtures', 'deny-feat.txt');
+const FAKE_DRIVER_ARGS_PATH = path.join(__dirname, 'fixtures', 'driverArgs.json');
 
 describe('Main Parser', function () {
   let p = getParser(true);
@@ -50,7 +51,7 @@ describe('Server Parser', function () {
   });
   it('should parse default capabilities correctly from a file', function () {
     let defaultCapabilities = {a: 'b'};
-    let args = p.parse_args(['--default-capabilities', 'test/fixtures/caps.json']);
+    let args = p.parse_args(['--default-capabilities', require.resolve('./fixtures/caps.json')]);
     args.defaultCapabilities.should.eql(defaultCapabilities);
   });
   it('should throw an error with invalid arg to default capabilities', function () {
@@ -73,7 +74,7 @@ describe('Server Parser', function () {
     p.parse_args(['--deny-insecure', 'foo,bar']).denyInsecure.should.eql(['foo', 'bar']);
     p.parse_args(['--deny-insecure', 'foo ,bar']).denyInsecure.should.eql(['foo', 'bar']);
   });
-  it('should parse --allow and --deny insecure from files', function () {
+  it('should parse --allow-insecure & --deny-insecure from files', function () {
     const parsed = p.parse_args([
       '--allow-insecure', ALLOW_FIXTURE, '--deny-insecure', DENY_FIXTURE
     ]);
