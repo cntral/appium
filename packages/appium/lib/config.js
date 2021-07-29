@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import path from 'path';
-import { mkdirp, system } from 'appium-support';
+import { mkdirp, system } from '@appium/support';
 import axios from 'axios';
 import { exec } from 'teen_process';
 import { rootDir } from './utils';

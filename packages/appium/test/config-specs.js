@@ -10,7 +10,7 @@ import { getGitRev, getBuildInfo, checkNodeOk, warnNodeDeprecations,
          APPIUM_VER } from '../lib/config';
 import getParser from '../lib/cli/parser';
 import logger from '../lib/logger';
-import { fs } from 'appium-support';
+import { fs } from '@appium/support';
 import axios from 'axios';
 
 let should = chai.should();

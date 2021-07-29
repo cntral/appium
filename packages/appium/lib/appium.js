@@ -6,7 +6,7 @@ import { BaseDriver, errors, isSessionCommand } from '@appium/base-driver';
 import B from 'bluebird';
 import AsyncLock from 'async-lock';
 import { parseExtensionArgs, parseCapsForInnerDriver, pullSettings } from './utils';
-import { util } from 'appium-support';
+import { util } from '@appium/support';
 
 const desiredCapabilityConstraints = {
   automationName: {
