@@ -26,7 +26,6 @@ lib/devices/android/bootstrap/target/
 *~
 org.eclipse.ltk.core.refactoring.prefs
 .appiumconfig*
-build/
 .idea
 *DerivedData
 __pycache__
